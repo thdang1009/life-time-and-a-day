@@ -356,23 +356,52 @@ function initMusic() {
 }
 
 // ─── Floating Hearts ───────────────────────────
+const HEART_POOL = ['♥', '♡', '❤', '💕', '💗', '💖', '💓', '🤍', '🩷'];
+const HEART_COLORS = ['#f9a8d4', '#f472b6', '#ec4899', '#fda4af', '#fb7185', '#fbbf24', '#fdba74', '#fff'];
+
 function spawnHeart() {
   const container = document.getElementById('hearts-container');
   const heart = document.createElement('span');
   heart.className = 'floating-heart';
-  heart.innerHTML = ['♥', '♡', '❤', '💕', '💗'][Math.floor(Math.random() * 5)];
-  heart.style.left = Math.random() * 100 + '%';
-  heart.style.animationDuration = (6 + Math.random() * 6) + 's';
-  heart.style.fontSize = (0.8 + Math.random() * 1) + 'rem';
-  container.appendChild(heart);
+  heart.innerHTML = HEART_POOL[Math.floor(Math.random() * HEART_POOL.length)];
 
-  heart.addEventListener('animationend', () => heart.remove());
+  const size = 0.6 + Math.random() * 1.4;
+  const opacity = 0.25 + Math.random() * 0.45;
+  const duration = 7 + Math.random() * 9;
+  const swayDuration = 2 + Math.random() * 3;
+  const swayX = 15 + Math.random() * 40;
+
+  heart.style.left = Math.random() * 100 + '%';
+  heart.style.fontSize = size + 'rem';
+  heart.style.color = HEART_COLORS[Math.floor(Math.random() * HEART_COLORS.length)];
+  heart.style.setProperty('--float-duration', duration + 's');
+  heart.style.setProperty('--sway-duration', swayDuration + 's');
+  heart.style.setProperty('--sway-x', swayX + 'px');
+  heart.style.setProperty('--heart-scale', (0.6 + Math.random() * 0.8).toFixed(2));
+  heart.style.setProperty('--heart-opacity', opacity.toFixed(2));
+  // Offset the sway start so hearts don't all move in sync
+  heart.style.animationDelay = '0s, -' + (Math.random() * swayDuration).toFixed(2) + 's';
+
+  container.appendChild(heart);
+  heart.addEventListener('animationend', (e) => {
+    if (e.animationName === 'floatUp') heart.remove();
+  });
 }
 
 function startHearts() {
-  // Spawn one immediately, then every 3-5 seconds
-  spawnHeart();
-  setInterval(() => spawnHeart(), 3000 + Math.random() * 2000);
+  // Initial burst: spawn a few right away so the screen isn't empty
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => spawnHeart(), i * 300);
+  }
+  // Continuous stream: spawn a heart every 800-1500ms
+  function scheduleNext() {
+    const delay = 800 + Math.random() * 700;
+    setTimeout(() => {
+      spawnHeart();
+      scheduleNext();
+    }, delay);
+  }
+  scheduleNext();
 }
 
 // ─── Scroll Animations (IntersectionObserver) ──
