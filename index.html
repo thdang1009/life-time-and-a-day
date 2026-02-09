@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1314 — Lifetime & A Day</title>
+  <meta name="description" content="Since July 10, 2022. From the first 'Hello' to 'I Do'." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sunset: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c', 500: '#f97316' },
+            gold: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b' },
+            blush: { 50: '#fdf2f8', 100: '#fce7f3', 200: '#fbcfe8', 300: '#f9a8d4', 400: '#f472b6', 500: '#ec4899' },
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans overflow-x-hidden">
+
+  <!-- Floating Hearts Container -->
+  <div id="hearts-container" class="fixed inset-0 pointer-events-none z-50" aria-hidden="true"></div>
+
+  <!-- ==================== SECTION 1: HERO / LANDING ==================== -->
+  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <!-- Background gradient (changes based on dating/married phase) -->
+    <div id="hero-bg" class="absolute inset-0 transition-all duration-1000"></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <!-- The big number -->
+      <h1 class="font-serif text-8xl md:text-9xl font-bold tracking-tight fade-in-up">
+        <span id="hero-number" class="bg-gradient-to-r from-blush-400 via-blush-500 to-sunset-400 bg-clip-text text-transparent">1314</span>
+      </h1>
+
+      <p class="mt-4 text-lg md:text-xl text-stone-500 font-light fade-in-up delay-200">
+        Since <span class="font-medium text-stone-700">July 10, 2022</span>
+      </p>
+      <p class="mt-1 text-base md:text-lg text-stone-400 italic font-serif fade-in-up delay-400">
+        From the first "Hello" to "I Do."
+      </p>
+
+      <!-- Live Counter (FR-01) -->
+      <div id="live-counter" class="mt-10 grid grid-cols-3 gap-4 md:gap-8 fade-in-up delay-600">
+        <div class="counter-card">
+          <span id="counter-days" class="text-4xl md:text-5xl font-serif font-bold text-blush-500">—</span>
+          <span class="text-xs md:text-sm text-stone-400 uppercase tracking-widest mt-1">Days</span>
+        </div>
+        <div class="counter-card">
+          <span id="counter-hours" class="text-4xl md:text-5xl font-serif font-bold text-blush-400">—</span>
+          <span class="text-xs md:text-sm text-stone-400 uppercase tracking-widest mt-1">Hours</span>
+        </div>
+        <div class="counter-card">
+          <span id="counter-minutes" class="text-4xl md:text-5xl font-serif font-bold text-blush-300">—</span>
+          <span class="text-xs md:text-sm text-stone-400 uppercase tracking-widest mt-1">Minutes</span>
+        </div>
+      </div>
+
+      <!-- Chapter badge (FR-02) -->
+      <div id="chapter-badge" class="mt-8 fade-in-up delay-800">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border"></span>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: TIMELINE (FR-03) ==================== -->
+  <section id="timeline" class="py-20 md:py-32 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-serif text-3xl md:text-4xl text-center font-bold text-stone-800 fade-in-up">
+        Our Story
+      </h2>
+      <p class="text-center text-stone-400 mt-2 mb-16 font-light fade-in-up delay-200">A walk down memory lane</p>
+
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blush-200 via-blush-300 to-gold-300"></div>
+
+        <!-- Timeline events -->
+        <div id="timeline-events" class="space-y-12 md:space-y-16">
+          <!-- Events are injected by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: WEDDING GALLERY ==================== -->
+  <section id="gallery" class="py-20 md:py-32 px-6 bg-gradient-to-b from-white to-gold-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 bg-gold-100 text-gold-600 rounded-full text-sm font-medium mb-4 fade-in-up">
+          Just Married
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-stone-800 fade-in-up delay-200">
+          December 24–25, 2024
+        </h2>
+        <p class="text-stone-400 mt-2 font-light fade-in-up delay-400">The day we became forever</p>
+      </div>
+
+      <!-- Photo grid — placeholder slots -->
+      <div id="photo-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        <div class="gallery-slot aspect-[3/4] rounded-2xl fade-in-up" data-index="0">
+          <div class="gallery-placeholder">
+            <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-xs text-stone-400 mt-2">Photo 1</span>
+          </div>
+        </div>
+        <div class="gallery-slot aspect-square rounded-2xl fade-in-up delay-200" data-index="1">
+          <div class="gallery-placeholder">
+            <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-xs text-stone-400 mt-2">Photo 2</span>
+          </div>
+        </div>
+        <div class="gallery-slot aspect-[3/4] rounded-2xl fade-in-up delay-400" data-index="2">
+          <div class="gallery-placeholder">
+            <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-xs text-stone-400 mt-2">Photo 3</span>
+          </div>
+        </div>
+        <div class="gallery-slot aspect-square rounded-2xl fade-in-up delay-200" data-index="3">
+          <div class="gallery-placeholder">
+            <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-xs text-stone-400 mt-2">Photo 4</span>
+          </div>
+        </div>
+        <div class="gallery-slot aspect-[3/4] rounded-2xl fade-in-up delay-400" data-index="4">
+          <div class="gallery-placeholder">
+            <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-xs text-stone-400 mt-2">Photo 5</span>
+          </div>
+        </div>
+        <div class="gallery-slot aspect-square rounded-2xl fade-in-up delay-600" data-index="5">
+          <div class="gallery-placeholder">
+            <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-xs text-stone-400 mt-2">Photo 6</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-xs text-stone-400 mt-6">
+        Replace placeholders by adding your photos to <code class="bg-stone-100 px-1.5 py-0.5 rounded">assets/photos/</code>
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 4: SECRET LOVE NOTE (FR-04) ==================== -->
+  <section id="love-note" class="py-20 md:py-32 px-6 bg-white">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-stone-800 fade-in-up">
+        A Secret For You
+      </h2>
+      <p class="text-stone-400 mt-2 mb-10 font-light fade-in-up delay-200">Click the envelope to reveal</p>
+
+      <!-- Envelope -->
+      <div id="envelope" class="relative cursor-pointer mx-auto w-48 h-36 fade-in-up delay-400" role="button" tabindex="0" aria-label="Click to reveal love note">
+        <div class="envelope-body">
+          <div class="envelope-flap"></div>
+          <div class="envelope-heart">&#10084;</div>
+        </div>
+      </div>
+
+      <!-- Hidden love note -->
+      <div id="note-content" class="mt-10 opacity-0 translate-y-4 transition-all duration-700 pointer-events-none">
+        <div class="bg-gradient-to-br from-blush-50 to-gold-50 rounded-3xl p-8 md:p-10 border border-blush-100 shadow-sm">
+          <p class="font-serif text-lg md:text-xl leading-relaxed text-stone-700 italic">
+            "Em yêu,<br><br>
+            Anh không biết cách nào để nói hết những gì anh cảm nhận.
+            Nhưng anh biết rằng, mỗi ngày bên em là một ngày anh muốn sống trọn vẹn nhất.
+            1314 ngày — mỗi ngày đều là một lý do để anh yêu em nhiều hơn.<br><br>
+            Mãi yêu em,<br>
+            <span class='text-blush-500'>♥</span> Anh"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: THE PROMISE ==================== -->
+  <section id="promise" class="py-20 md:py-32 px-6 bg-gradient-to-b from-white to-blush-50">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="fade-in-up">
+        <p class="font-serif text-2xl md:text-4xl font-bold leading-snug text-stone-800">
+          "1314 days down,<br>
+          <span class="bg-gradient-to-r from-blush-400 to-gold-400 bg-clip-text text-transparent">a lifetime to go.</span>"
+        </p>
+      </div>
+      <div class="mt-8 fade-in-up delay-400">
+        <span class="text-stone-400 text-sm">一生一世 — yī shēng yī shì</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-8 px-6 bg-stone-900 text-stone-400 text-center text-sm">
+    <p>Made with <span class="text-blush-400">♥</span> for my forever person</p>
+    <p class="mt-1 text-stone-500 text-xs">Project 1314 — Lifetime & A Day</p>
+  </footer>
+
+  <!-- ==================== MUSIC PLAYER (FR-05) ==================== -->
+  <div id="music-player" class="fixed bottom-6 right-6 z-40">
+    <button id="music-btn" class="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-stone-200 flex items-center justify-center hover:scale-110 transition-transform" aria-label="Play/Pause music">
+      <svg id="music-icon-play" class="w-5 h-5 text-blush-500" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <svg id="music-icon-pause" class="w-5 h-5 text-blush-500 hidden" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+    </button>
+    <div id="music-pulse" class="absolute inset-0 rounded-full border-2 border-blush-300 animate-ping opacity-0 pointer-events-none"></div>
+  </div>
+
+  <!-- Audio element -->
+  <audio id="bg-music" loop preload="auto">
+    <!-- Place your song in assets/music/song.mp3 -->
+    <source src="assets/music/song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
