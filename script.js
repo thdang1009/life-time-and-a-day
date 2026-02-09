@@ -42,47 +42,243 @@ function setChapterPhase() {
 // ─── FR-03: Timeline Data & Rendering ──────────
 const TIMELINE_EVENTS = [
   {
-    date: 'July 10, 2022',
-    title: 'The Beginning',
-    description: 'The day our story started. A simple "Hello" that changed everything.',
-    icon: '💫',
-    isWedding: false,
+    "date": "April 2022",
+    "title": "The First Encounter",
+    "description": "Gặp Hồng Huế. Phát triển khía cạnh tình cảm cùng người vô cùng phù hợp. Cuối tháng bắt đầu gọi ai đó là \"Pé\".",
+    "icon": "👀",
+    "isWedding": false
   },
   {
-    date: 'August 2022',
-    title: 'First Date',
-    description: 'Nervous hearts, shy smiles, and the start of something beautiful.',
-    icon: '☕',
-    isWedding: false,
+    "date": "May 2022",
+    "title": "Getting Closer",
+    "description": "Cùng nhau đi siêu thị và bắt đầu những buổi đi chơi.",
+    "icon": "🛒",
+    "isWedding": false
   },
   {
-    date: '2023',
-    title: 'First Trip Together',
-    description: 'Exploring new places hand in hand, creating memories along the way.',
-    icon: '✈️',
-    isWedding: false,
+    "date": "June 2022",
+    "title": "Courtship",
+    "description": "Mua hoa và tặng sách cho người ấy.",
+    "icon": "🌹",
+    "isWedding": false
   },
   {
-    date: 'Mid 2024',
-    title: 'The Proposal',
-    description: '"Will you marry me?" — The best question ever asked.',
-    icon: '💍',
-    isWedding: false,
+    "date": "July 10, 2022",
+    "title": "The Beginning",
+    "description": "Định chạy bộ nhưng quay xe đi Rooftop. Tỏ tình. Có người yêu. Đi xem Conan cùng nhau.",
+    "icon": "👩‍❤️‍👨",
+    "isWedding": false
   },
   {
-    date: 'Dec 24–25, 2024',
-    title: '"I Do"',
-    description: 'Two hearts, one promise. The beginning of forever.',
-    icon: '💒',
-    isWedding: true,
+    "date": "August 2022",
+    "title": "1st Month Anniversary",
+    "description": "Đi Baozi ăn mừng kỷ niệm tình yêu 1 tháng.",
+    "icon": "🥟",
+    "isWedding": false
   },
   {
-    date: 'Today & Beyond',
-    title: 'Our Lifetime',
-    description: 'Every new day is a new page in our love story.',
-    icon: '♾️',
-    isWedding: false,
+    "date": "September 2022",
+    "title": "Deep Connection",
+    "description": "Nhận ra gặp đúng người thì có thể kể rất nhiều chuyện sâu thẳm. Chăm sóc nhau khi bệnh.",
+    "icon": "🗣️",
+    "isWedding": false
   },
+  {
+    "date": "November 2022",
+    "title": "Simple Joys",
+    "description": "Chở người yêu qua Bình Thạnh may áo dài. Đi hội sách ở Công viên Văn Lang.",
+    "icon": "👗",
+    "isWedding": false
+  },
+  {
+    "date": "December 2022",
+    "title": "Homecoming & Gaming",
+    "description": "Về quê có bạn đồng hành. Dẫn người yêu đi chơi net.",
+    "icon": "🚌",
+    "isWedding": false
+  },
+  {
+    "date": "January 2023",
+    "title": "Tet Holiday",
+    "description": "Đi du lịch chung, đưa người yêu về quê và về quê người yêu. Chụp hình ở bảo tàng áo dài.",
+    "icon": "🏮",
+    "isWedding": false
+  },
+  {
+    "date": "February 2023",
+    "title": "Valentine's Day",
+    "description": "Nhận và tặng KIT quà Valentine siêu xinh xịn.",
+    "icon": "🍫",
+    "isWedding": false
+  },
+  {
+    "date": "March 2023",
+    "title": "Care & Gifts",
+    "description": "Chở người yêu đi mua len. Tặng quần áo cho người yêu.",
+    "icon": "🧶",
+    "isWedding": false
+  },
+  {
+    "date": "April 2023",
+    "title": "1 Year Milestone",
+    "description": "Mừng sinh nhật người yêu hoành tráng. Mua thú bông thỏ cà rốt. Kỷ niệm 1 năm bên nhau.",
+    "icon": "🎂",
+    "isWedding": false
+  },
+  {
+    "date": "May 2023",
+    "title": "Graduation",
+    "description": "Đi lễ tốt nghiệp người yêu và ăn Haidilao.",
+    "icon": "🎓",
+    "isWedding": false
+  },
+  {
+    "date": "July 2023",
+    "title": "Central Vietnam Trip",
+    "description": "Đi Huế - Đà Nẵng - Hội An cùng nhau tầm 1 tuần.",
+    "icon": "✈️",
+    "isWedding": false
+  },
+  {
+    "date": "September 2023",
+    "title": "Birthday Dinner",
+    "description": "Đi ăn Topping Beef The Villa để mừng sinh nhật.",
+    "icon": "🥩",
+    "isWedding": false
+  },
+  {
+    "date": "November 2023",
+    "title": "Understanding",
+    "description": "Trục trặc tình cảm nhưng sau đó cả hai càng hiểu và chấp nhận nhau nhiều hơn.",
+    "icon": "🤝",
+    "isWedding": false
+  },
+  {
+    "date": "December 2023",
+    "title": "The Proposal",
+    "description": "Cầu hôn.",
+    "icon": "💍",
+    "isWedding": false
+  },
+  {
+    "date": "January 2024",
+    "title": "Wedding Goals",
+    "description": "Lập mục tiêu đi du lịch và tổ chức đám cưới cuối năm. Food tour cùng người yêu.",
+    "icon": "📝",
+    "isWedding": false
+  },
+  {
+    "date": "February 2024",
+    "title": "Love & Fish",
+    "description": "14/2 đầy ắp quà và tình yêu. Setup hồ cá cùng nhau.",
+    "icon": "🐟",
+    "isWedding": false
+  },
+  {
+    "date": "April 2024",
+    "title": "Birthday Celebration",
+    "description": "Mừng sinh nhật cùng em iu.",
+    "icon": "🎉",
+    "isWedding": false
+  },
+  {
+    "date": "June 2024",
+    "title": "Proposal & Planning",
+    "description": "Cầu hôn (lần 2/chính thức). Bắt đầu chuẩn bị giấy tờ.",
+    "icon": "💍",
+    "isWedding": false
+  },
+  {
+    "date": "July 2024",
+    "title": "Engagement Steps",
+    "description": "Bê tráp. Kỷ niệm 2 năm hẹn hò. Mua nhẫn và tặng quà nhỏ cho người yêu.",
+    "icon": "🎁",
+    "isWedding": false
+  },
+  {
+    "date": "October 2024",
+    "title": "Wedding Photos",
+    "description": "Chụp ảnh cưới.",
+    "icon": "📸",
+    "isWedding": false
+  },
+  {
+    "date": "December 2024",
+    "title": "The Wedding",
+    "description": "Phát thiệp cưới. Đón vợ về nhà. Honey moon.",
+    "icon": "💒",
+    "isWedding": true
+  },
+  {
+    "date": "January 2025",
+    "title": "Newlyweds",
+    "description": "Cùng vợ iu đi ăn Tacos. Nấu ăn tại nhà rất nhiều.",
+    "icon": "🌮",
+    "isWedding": false
+  },
+  {
+    "date": "February 2025",
+    "title": "Valentine's Chef",
+    "description": "Nấu Bít tết tại nhà cho vợ iu và tặng quà Valentine.",
+    "icon": "🍽️",
+    "isWedding": false
+  },
+  {
+    "date": "March 2025",
+    "title": "Travel & Gaming",
+    "description": "Cùng vợ iu chơi Stardew Valley. Tặng máy đánh bọt sữa. Đi Quy Nhơn cùng nhau.",
+    "icon": "🎮",
+    "isWedding": false
+  },
+  {
+    "date": "April 2025",
+    "title": "Simple Dates",
+    "description": "Đi hội chợ, thắng được 2 cái chén và tô tượng rất vui cùng.",
+    "icon": "🎨",
+    "isWedding": false
+  },
+  {
+    "date": "May 2025",
+    "title": "Vung Tau Trip",
+    "description": "Đi bắt chò và đi Vũng Tàu cùng vợ iu.",
+    "icon": "🌊",
+    "isWedding": false
+  },
+  {
+    "date": "June 2025",
+    "title": "Wife's Cooking",
+    "description": "Vợ mua cá đầy tủ lạnh. Vợ iu làm mì tương đen ngon lắm.",
+    "icon": "🍜",
+    "isWedding": false
+  },
+  {
+    "date": "July 2025",
+    "title": "Master Chef Wife",
+    "description": "Vợ iu làm gỏi cá phi lê, chả cá lã vọng và bao tử cá ba sa.",
+    "icon": "👩‍🍳",
+    "isWedding": false
+  },
+  {
+    "date": "August 2025",
+    "title": "Small Gifts",
+    "description": "Mua chuột hồng cho vợ iu.",
+    "icon": "🖱️",
+    "isWedding": false
+  },
+  {
+    "date": "September 2025",
+    "title": "Her Birthday",
+    "description": "Chơi ARK ASA cùng nhau. Đi xem mưa đỏ. Sinh nhật đáng nhớ cùng vợ iu.",
+    "icon": "🎂",
+    "isWedding": false
+  },
+  {
+    "date": "December 2025",
+    "title": "1st Wedding Anniversary",
+    "description": "Cùng tái hiện cơm chiên mắm ruốc Thái Lan. Kỷ niệm 1 năm ngày cưới cùng vợ iu.",
+    "icon": "🥂",
+    "isWedding": false
+  }
 ];
 
 function renderTimeline() {
