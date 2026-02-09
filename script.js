@@ -267,7 +267,7 @@ const TIMELINE_EVENTS = [
   },
   {
     "date": "September 2025",
-    "title": "Her Birthday",
+    "title": "Dang's Birthday",
     "description": "Chơi ARK ASA cùng nhau. Đi xem mưa đỏ. Sinh nhật đáng nhớ cùng vợ iu.",
     "icon": "🎂",
     "isWedding": false
